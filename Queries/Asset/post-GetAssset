@@ -1,0 +1,32 @@
+query getAsset($input: AssetIdentifierInput!) {
+  getAsset(input: $input) {
+    assetId
+    name
+    assetClass
+    client
+    site
+    requester
+    primaryMac
+    loggedInUser
+    serialNumber
+    manufacturer
+    model
+    hostName
+    publicIp
+    gateway
+    platform
+    domain
+    status
+    sysUptime
+    lastCommunicatedTime
+    agentVersion
+    platformFamily
+    platformCategory
+    platformVersion
+    patchStatus
+    warrantyExpiryDate
+    purchasedDate
+    customFields
+    lastReportedTime
+  }
+}
