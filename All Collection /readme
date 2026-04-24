@@ -1,0 +1,30 @@
+# SuperOps API Collection
+
+A sanitized Postman collection containing sample API requests and workflows built around the SuperOps platform.
+
+This repository showcases practical API usage across IT operations, service management, and customer support workflows.
+
+## Included Modules
+
+- Asset Management APIs
+- Ticket Management APIs
+- Client / Account APIs
+- Requester / Contact APIs
+- Contract APIs
+- IT Documentation APIs
+- GraphQL Queries
+- Workflow Automation Use Cases
+
+## Use Cases
+
+- Retrieve asset details and activity logs
+- Create and manage tickets
+- Fetch ticket conversations and notes
+- Manage client and requester information
+- Access contracts and documentation records
+- Build custom automations using APIs
+
+## Collection File
+
+```text
+collections/superops-main.postman_collection.json
