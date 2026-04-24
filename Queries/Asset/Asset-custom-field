@@ -1,0 +1,13 @@
+query getAssetCustomFields($input: [String!]) {
+  getAssetCustomFields(input: $input) {
+    id
+    columnName
+    label
+    description
+    fieldType
+    showToClient
+  }
+}
+
+#variable
+{"input": ["Windows"]}
