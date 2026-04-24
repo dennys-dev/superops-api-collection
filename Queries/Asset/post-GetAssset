@@ -30,3 +30,6 @@ query getAsset($input: AssetIdentifierInput!) {
     lastReportedTime
   }
 }
+
+#variables
+{"input": {"assetId": "ASSETID"}}
