@@ -1,0 +1,22 @@
+query getAssetDiskDetails($input: AssetIdentifierInput!) {
+  getAssetDiskDetails(input: $input) {
+    drive
+    discType
+    fileSystem
+    maxFileLength
+    autoMounted
+    compressed
+    pageFile
+    indexed
+    size
+    freeSize
+    activeTime
+    responseTime
+    readSpeed
+    writeSpeed
+    driveUsage
+  }
+}
+
+#variable
+{"input": {"assetId": "ASSETID"}}
