@@ -1,0 +1,19 @@
+query getAssetActivity($input: AssetDetailsListInput!) {
+  getAssetActivity(input: $input) {
+    activities { 
+      activityId
+      module
+      activityType
+      activityData
+      createdBy
+      createdTime
+    }
+    listInfo {
+      page
+      pageSize
+    }
+  }
+}
+
+#GraphQL variables
+{"input": {"assetId": "ASSETID", "listInfo": {"page": 1, "pageSize": 100}}}
