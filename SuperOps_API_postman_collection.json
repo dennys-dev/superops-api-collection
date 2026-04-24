@@ -1,0 +1,3896 @@
+{
+	"info": {
+		"_postman_id": "edfd66fa-4227-47ed-a252-22049909e4bf",
+		"name": "SuperOps Customer Shareable API.",
+		"description": "[https://developer.superops.com/](https://developer.superops.com/#definition-Alert)\n\nThis collection contains sample API calls for all the API provided in the SuperOps API documentation.\n\n**NOTE:**\n\n\\-> Replace the Subdomain, API key, and IDs before testing\n\n\\-> Please do not make any chanes to the collection as it is shared among users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44688116",
+		"_collection_link": "https://ani-4554742.postman.co/workspace/Ani's-Workspace~7c23de88-963b-4069-81b2-2e31850b869e/collection/44688116-edfd66fa-4227-47ed-a252-22049909e4bf?action=share&source=collection_link&creator=44688116"
+	},
+	"item": [
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "Asset",
+					"item": [
+						{
+							"name": "getAsset",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAsset($input: AssetIdentifierInput!) {\n  getAsset(input: $input) {\n    assetId\n    name\n    assetClass\n    client\n    site\n    requester\n    primaryMac\n    loggedInUser\n    serialNumber\n    manufacturer\n    model\n    hostName\n    publicIp\n    gateway\n    platform\n    domain\n    status\n    sysUptime\n    lastCommunicatedTime\n    agentVersion\n    platformFamily\n    platformCategory\n    platformVersion\n    patchStatus\n    warrantyExpiryDate\n    purchasedDate\n    customFields\n    lastReportedTime\n  }\n}\n",
+										"variables": "{\"input\": {\"assetId\": \"ASSETID\"}}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetActivity",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetActivity($input: AssetDetailsListInput!) {\n  getAssetActivity(input: $input) {\n    activities {\n      activityId\n      module\n      activityType\n      activityData\n      createdBy\n      createdTime\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": {\"assetId\": \"ASSETID\", \"listInfo\": {\"page\": 1, \"pageSize\": 100}}}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetCustomFields",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetCustomFields($input: [String!]) {\n  getAssetCustomFields(input: $input) {\n    id\n    columnName\n    label\n    description\n    fieldType\n    showToClient\n  }\n}\n",
+										"variables": "{\"input\": [\"Windows\"]}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetDiskDetails",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetDiskDetails($input: AssetIdentifierInput!) {\n  getAssetDiskDetails(input: $input) {\n    drive\n    discType\n    fileSystem\n    maxFileLength\n    autoMounted\n    compressed\n    pageFile\n    indexed\n    size\n    freeSize\n    activeTime\n    responseTime\n    readSpeed\n    writeSpeed\n    driveUsage\n  }\n}\n",
+										"variables": "{\"input\": {\"assetId\": \"ASSETID\"}}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetInfoByTPEndpointIds",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetInfoByTPEndpointIds($input: TPAssetInfoInput) {\n  getAssetInfoByTPEndpointIds(input: $input) {\n    tpEndpointId\n    superOpsAssetInfo {\n      tpEndpointId\n      superOpsAssetInfo\n    }\n  }\n}\n",
+										"variables": "{\"input\": {\n    {\n  \"tpEndpointIds\": [\"xyz789\"],\n  \"integrationRefId\": \"4\"\n}\n}}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetList",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetList($input: ListInfoInput!) {\n  getAssetList(input: $input) {\n    assets {\n      assetId\n      name\n      assetClass\n      client\n      site\n      requester\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": {\n    \"page\":1,\n    \"pageSize\":10,\n \"condition\": {\n  \"attribute\": \"name\",\n  \"operator\": \"contains\",\n  \"value\": \"Surface\"\n}\n }\n}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetPatchDetails",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetPatchDetails($input: AssetDetailsListInput!) {\n  getAssetPatchDetails(input: $input) {\n    assetPatches {\n      patchDetail{\n        patchId\n        patchKey\n        title\n        publishedDate\n        category\n        severity\n        kbNumbers\n        {kbNumber}\n        restartRequired\n      }\n      approvalStatus\n      installationTime\n      installationStatus\n      failedMessage\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": {\"assetId\": \"ASSETID\", \"listInfo\": {\"page\": 1, \"pageSize\": 100}}}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetSoftwareList",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetSoftwareList($input: AssetDetailsListInput!) {\n  getAssetSoftwareList(input: $input) {\n    assetSoftwares {\n      id\n      software\n      version\n      installedDate\n      bitVersion\n      installedPath\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": {\"assetId\": \"ASSETID\", \"listInfo\": {\"page\": 1, \"pageSize\": 100}}}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetSummary",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetSummary($input: AssetIdentifierInput!) {\n  getAssetSummary(input: $input) {\n    cpu {\n      assetId\n      cpuName\n      currentSpeed\n      maxSpeed\n      physicalCore\n      logicalCore\n      architecture\n      l1Cache\n      l2Cache\n      l3Cache\n      processCount\n      threadsCount\n      handlesCount\n      cpuUsage\n    }\n    memory {\n      totalMemory\n      usedMemory\n      availableMemory\n      cachedMemory\n      pagedPoolByte\n      nonPagedPoolByte\n      memoryUsage\n      swapTotalMemory\n      swapAvailableMemory\n      swapUsedMemory\n    }\n    disk {\n      disks{\n        drive\n        discType\n        fileSystem\n        maxFileLength\n        autoMounted\n        compressed\n        pageFile\n        indexed\n        size\n        freeSize\n        activeTime\n        responseTime\n        readSpeed\n        writeSpeed\n        driveUsage\n      }\n      totalFreeSpace\n      totalSize\n    }\n    assetInterface {\n      name\n      mac\n      ipv4Address\n      ipv6Address\n      infIndex\n      mtu\n      connectType\n      lineSpeed\n      dataInPerSec\n      dataOutPerSec\n      adapterName\n    }\n    lastUserLog {\n      id\n      name\n      lastLoginTime\n    }\n  }\n}\n",
+										"variables": "{\"input\": {\"assetId\": \"ASSETID\"}}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getAssetUserLog",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "api-eyJhbGciOiJSUzI1NiJ9.eyJqdGkiOiIyNDI5MDA4NzczNjExMDQ0ODY0IiwicmFuZG9taXplciI6Iu-_vVx1MDAxMe-_ve-_ve-_ve-_vVxuXHUwMDAwZVx1MDAwMSJ9.b9P-TQ3mRO5AGxXzZhJUyd117PBQo16bORShUWTcykTCIC71O4gKz23jKRUKCJrstNiAp4wXlouC8Tth8L6xzcFcDaqs_nDnNZD28OVhPhszZdwuFPFPiWuQSQlFn5FUBfMQBiPbeFTbYK4yxdY30KPIvDPfUNAXkTipLLIchLHVVOyN4W5iYVyuonuQ-xXyYootKwUlNxfTrADwRS2uzjsFpqRAaKQYUlcYYnptrH0WegA_l1eEJgjQ8EceOMWNpFMnNwK3WM7tFZ2iFbyzNf7kkfzAQ1Dh8BGkuXRDmL_wq7nzwucTCXpFlgV1U5fwThr98811_mLFovVEVeRp2w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getAssetUserLog($input: AssetIdentifierInput!) {\n  getAssetUserLog(input: $input) {\n    id\n    name\n    lastLoginTime\n  }\n}\n",
+										"variables": "{\"input\": {\"assetId\": \"ASSETID\"}}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "getClient",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClient($input: ClientIdentifierInput!) {\n  getClient(input: $input) {\n    accountId\n    name\n    stage\n    status\n    emailDomains\n    accountManager\n    primaryContact\n    secondaryContact\n    hqSite\n    technicianGroups\n    customFields\n  }\n}\n",
+										"variables": "{\"input\": \n{\"accountId\": \"accountID\"}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientCustomField",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientCustomField($input: CustomFieldIdentifierInput) {\n  getClientCustomField(input: $input) {\n    id\n    columnName\n    label\n    description\n    fieldType\n    showToClient\n  }\n}\n",
+										"variables": "{\"input\": \n{\"fieldId\": \"fieldID\"}\n}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientCustomFieldList",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientCustomFieldList {\n  getClientCustomFieldList {\n    id\n    columnName\n    label\n    description\n    fieldType\n    showToClient\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientList",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientList($input: ListInfoInput!) {\n  getClientList(input: $input) {\n    clients {\n      accountId\n      name\n      stage\n      status\n      emailDomains\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": \n{\n  \"page\": 1,\n  \"pageSize\": 100\n}\n}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientSiteList",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientSiteList($input: GetClientSiteListInput!) {\n  getClientSiteList(input: $input) {\n    sites {\n     id\n     name\n     timezoneCode\n     working24x7\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": \n{\n  \"listInfo\": {\n  \"page\": 1,\n  \"pageSize\": 100}\n}\n}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientSite",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientSite($input: ClientSiteIdentifierInput!) {\n  getClientSite(input: $input) {\n    id\n    name\n    businessHour {\n      day\n      start\n      end\n    }\n    holidayList {\n      id\n      name\n    }\n    timezoneCode\n    working24x7\n    line1\n    line2\n    line3\n    city\n    postalCode\n    countryCode\n    stateCode\n    contactNumber\n    client\n    installerInfo {\n      id\n      installerDownloadUrl\n      installerName\n      os\n    }\n  }\n}\n",
+										"variables": "{\"input\": \n{\"id\": \"id\"}\n}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientStageList",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientStageList {\n  getClientStageList {\n    stageId\n    name\n    constant\n    statuses {\n      statusId\n      name\n      constant\n    }\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSLAList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getSLAList {\n  getSLAList {\n    id\n    name\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contract",
+					"item": [
+						{
+							"name": "getClientContractList",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientContractList($input: ListInfoInput) {\n  getClientContractList(input: $input) {\n    clientContracts {\n      contractId\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": \n{\n  \"page\": 1,\n  \"pageSize\": 100\n  \n}\n}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "getClientContractList",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "colorpalette",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query getClientContractList($input: ListInfoInput) {\n  getClientContractList(input: $input) {\n    clientContracts {\n      contractId\n      contract{\n        contractId\n        name\n        description\n      }\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+												"variables": "{\"input\": \n{\n  \"page\": 1,\n  \"pageSize\": 100\n}\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Thu, 01 May 2025 17:36:38 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "3774"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000 ; includeSubDomains"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"getClientContractList\": {\n            \"clientContracts\": [\n                {\n                    \"contractId\": \"3751359960922849280\",\n                    \"contract\": {\n                        \"contractId\": \"3751359960922849280\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"7068571662983970816\",\n                    \"contract\": {\n                        \"contractId\": \"7068571662983970816\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"6920087122589573120\",\n                    \"contract\": {\n                        \"contractId\": \"6920087122589573120\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"6920101988620623872\",\n                    \"contract\": {\n                        \"contractId\": \"6920101988620623872\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"6920098699267072000\",\n                    \"contract\": {\n                        \"contractId\": \"6920098699267072000\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"2368595350174109696\",\n                    \"contract\": {\n                        \"contractId\": \"2368595350174109696\",\n                        \"name\": \"Software installation\",\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"5419340297494089728\",\n                    \"contract\": {\n                        \"contractId\": \"5419340297494089728\",\n                        \"name\": null,\n                        \"description\": \"Every antivirus subscription is charged per asset.\"\n                    }\n                },\n                {\n                    \"contractId\": \"5419340297728970752\",\n                    \"contract\": {\n                        \"contractId\": \"5419340297728970752\",\n                        \"name\": null,\n                        \"description\": \"Remote and On-site Support is paid up-front\"\n                    }\n                },\n                {\n                    \"contractId\": \"906664434151780352\",\n                    \"contract\": {\n                        \"contractId\": \"906664434151780352\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"906666026880004096\",\n                    \"contract\": {\n                        \"contractId\": \"906666026880004096\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"98222101288181760\",\n                    \"contract\": {\n                        \"contractId\": \"98222101288181760\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"2723601462534782976\",\n                    \"contract\": {\n                        \"contractId\": \"2723601462534782976\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"8635268311620583424\",\n                    \"contract\": {\n                        \"contractId\": \"8635268311620583424\",\n                        \"name\": null,\n                        \"description\": \"Covers: Unlimited support tickets, on-site visits, cloud backups, network monitoring\"\n                    }\n                },\n                {\n                    \"contractId\": \"708504479931637760\",\n                    \"contract\": {\n                        \"contractId\": \"708504479931637760\",\n                        \"name\": null,\n                        \"description\": \"Test package\"\n                    }\n                },\n                {\n                    \"contractId\": \"2368594223022018560\",\n                    \"contract\": {\n                        \"contractId\": \"2368594223022018560\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"9071465865206640640\",\n                    \"contract\": {\n                        \"contractId\": \"9071465865206640640\",\n                        \"name\": null,\n                        \"description\": \"Remote and On-site Support is paid up-front\"\n                    }\n                },\n                {\n                    \"contractId\": \"3225772131015704576\",\n                    \"contract\": {\n                        \"contractId\": \"3225772131015704576\",\n                        \"name\": null,\n                        \"description\": null\n                    }\n                },\n                {\n                    \"contractId\": \"8611319573734825984\",\n                    \"contract\": {\n                        \"contractId\": \"8611319573734825984\",\n                        \"name\": null,\n                        \"description\": \"Remote and On-site Support is paid up-front\"\n                    }\n                },\n                {\n                    \"contractId\": \"8611628183689961472\",\n                    \"contract\": {\n                        \"contractId\": \"8611628183689961472\",\n                        \"name\": null,\n                        \"description\": null\n                    }\n                },\n                {\n                    \"contractId\": \"4488191650359365632\",\n                    \"contract\": {\n                        \"contractId\": \"4488191650359365632\",\n                        \"name\": null,\n                        \"description\": \"Remote and On-site Support is paid up-front\"\n                    }\n                },\n                {\n                    \"contractId\": \"1922932362849665024\",\n                    \"contract\": {\n                        \"contractId\": \"1922932362849665024\",\n                        \"name\": null,\n                        \"description\": \"Ashirwad - Gold\"\n                    }\n                },\n                {\n                    \"contractId\": \"2549092868942856192\",\n                    \"contract\": {\n                        \"contractId\": \"2549092868942856192\",\n                        \"name\": null,\n                        \"description\": \"Antivirus for Assets\"\n                    }\n                },\n                {\n                    \"contractId\": \"4708098534835130368\",\n                    \"contract\": {\n                        \"contractId\": \"4708098534835130368\",\n                        \"name\": null,\n                        \"description\": \"Network maintenance.\"\n                    }\n                },\n                {\n                    \"contractId\": \"2549093828071129088\",\n                    \"contract\": {\n                        \"contractId\": \"2549093828071129088\",\n                        \"name\": null,\n                        \"description\": \"Ashirwad - Gold-test\"\n                    }\n                },\n                {\n                    \"contractId\": \"5083009376919117824\",\n                    \"contract\": {\n                        \"contractId\": \"5083009376919117824\",\n                        \"name\": null,\n                        \"description\": \"Each employee is charged a monthly subscription for office 365 suite.\"\n                    }\n                },\n                {\n                    \"contractId\": \"2549093970920734720\",\n                    \"contract\": {\n                        \"contractId\": \"2549093970920734720\",\n                        \"name\": \"test\",\n                        \"description\": \"test\"\n                    }\n                },\n                {\n                    \"contractId\": \"6689522020371660800\",\n                    \"contract\": {\n                        \"contractId\": \"6689522020371660800\",\n                        \"name\": \"Remote Hours\",\n                        \"description\": \"\"\n                    }\n                },\n                {\n                    \"contractId\": \"906729419011846144\",\n                    \"contract\": {\n                        \"contractId\": \"906729419011846144\",\n                        \"name\": null,\n                        \"description\": \"\"\n                    }\n                }\n            ],\n            \"listInfo\": {\n                \"page\": 1,\n                \"pageSize\": 100\n            }\n        }\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Ticket",
+					"item": [
+						{
+							"name": "getCauseList",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getCauseList {\n  getCauseList {\n    id\n    name\n    subCauses {\n        id\n        name\n        description\n    }\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getImpactList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getImpactList {\n  getImpactList {\n    id\n    name\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getPriorityList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getPriorityList {\n  getPriorityList {\n    id\n    name\n    colorCode\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getResolutionCodeList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getResolutionCodeList {\n  getResolutionCodeList {\n    id\n    name\n    description\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getStatusList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getStatusList {\n  getStatusList {\n    id\n    name\n    description\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTicket",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getTicket($input: TicketIdentifierInput!) {\n  getTicket(input: $input) {\n    ticketId\n    displayId\n    subject\n    ticketType\n    source\n    client\n    site\n    requester\n    additionalRequester\n    followers\n    techGroup\n    technician\n    status\n    priority\n    impact\n    urgency\n    category\n    subcategory\n    cause\n    subcause\n    resolutionCode\n    sla\n    createdTime\n    updatedTime\n    firstResponseDueTime\n    firstResponseTime\n    firstResponseViolated\n    resolutionDueTime\n    resolutionTime\n    resolutionViolated\n    customFields\n  }\n}\n",
+										"variables": "{\"input\": {\"ticketId\": \"ticketID\"}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTicketConversationList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getTicketConversationList($input: TicketIdentifierInput!) {\n  getTicketConversationList(input: $input) {\n    conversationId\n    content\n    time\n    user\n    toUsers {\n      user\n    }\n    ccUsers {\n      user\n    }\n    bccUsers {\n      user\n    }\n    attachments {\n      fileName\n      originalFileName\n      fileSize\n    }\n    type\n  }\n}\n",
+										"variables": "{\"input\": {\"ticketId\": \"ticketId\"}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTicketCustomField",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getTicketCustomField($input: CustomFieldIdentifierInput) {\n  getTicketCustomField(input: $input) {\n    id\n    columnName\n    label\n    description\n    fieldType\n    showToClient\n  }\n}\n",
+										"variables": "{\"input\": {\"fieldId\": \"fieldId\"}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTicketCustomFieldList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getTicketCustomFieldList {\n  getTicketCustomFieldList {\n    id\n    columnName\n    label\n    description\n    fieldType\n    showToClient\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTicketList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getTicketList($input: ListInfoInput!) {\n  getTicketList(input: $input) {\n    tickets {\n      ticketId\n      displayId\n      subject\n      ticketType\n      source\n      client\n      site\n      requester\n      status\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\n\"input\": {\n\n  \"page\": 1,\n  \"pageSize\": 10,\n  \"sort\":{\n    \"attribute\": \"subject\",\n    \"order\": \"DESC\"\n  }\n}\n}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTicketNoteList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getTicketNoteList($input: TicketIdentifierInput!) {\n  getTicketNoteList(input: $input) {\n    noteId\n    addedBy\n    addedOn\n    content\n    attachments {\n      fileName\n      originalFileName\n      fileSize\n    }\n    privacyType\n  }\n}\n",
+										"variables": "{\"input\": {\"ticketId\": \"ticketId\"}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUrgencyList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getUrgencyList {\n  getUrgencyList {\n    id\n    name\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getWorklogEntries",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getWorklogEntries($input: GetWorklogEntriesInput!) {\n  getWorklogEntries(input: $input) {\n    entries {\n      itemId\n      status\n      serviceItem\n      billable\n      technician\n    }\n    listInfo {\n     page\n     pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": {\"module\": \"TICKET\", \"listInfo\": {\n  \"page\": 1,\n  \"pageSize\": 10}}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "IT Documentation",
+					"item": [
+						{
+							"name": "getItDocumentation",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getItDocumentation($input: ItDocumentationIdentifierInput!) {\n  getItDocumentation(input: $input) {\n    itDocId\n    name\n    client\n    site\n    customFields\n  }\n}\n",
+										"variables": "{\"input\": {\"itDocId\": \"itDocId\"}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getItDocumentationCategories",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getItDocumentationCategories {\n  getItDocumentationCategories {\n    typeId\n    name\n    description\n    entityName\n    lastUpdatedTime\n    customFields\n  }\n}\n",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getItDocumentationList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getItDocumentationList($input: ItDocumentationListInput!) {\n  getItDocumentationList(input: $input) {\n    documents {\n      itDocId\n      name\n      client\n      site\n      customFields\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\n    \"input\": {\n        \"typeId\": ID,\n        \"listInfo\":{ \n        \"page\": 1,\n        \"pageSize\": 10\n        }\n    }\n}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Requester",
+					"item": [
+						{
+							"name": "getClientUser",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientUser($input: ClientUserIdentifierInput!) {\n  getClientUser(input: $input) {\n    userId\n    firstName\n    lastName\n    name\n    email\n    contactNumber\n    reportingManager\n    site\n    role\n    client\n    customFields\n  }\n}\n",
+										"variables": "{\"input\": \n{\"userId\": \"USERID\"}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientUserList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientUserList($input: GetClientUserListInput!) {\n  getClientUserList(input: $input) {\n    userList {\n      userId\n      firstName\n      lastName\n      name\n      email\n      contactNumber\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": \n{\"listInfo\": \n{\n  \"page\": 1,\n  \"pageSize\": 100}, \"clientId\": \"CLIENTID\"}\n}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getClientUserAssociationList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getClientUserAssociationList($input: ListInfoInput!) {\n  getClientUserAssociationList(input: $input) {\n    associations {\n      id\n      client{\n        accountId\n        name\n        stage\n        status\n      }\n      site{\n        id\n        name\n      }\n      user {\n        userId\n        firstName\n        lastName\n        email\n      }\n    }\n    listInfo {\n      page\n      pageSize\n    }\n\n  }\n}\n",
+										"variables": "{\"input\": \n{\n    \"page\":1,\n    \"pageSize\":100\n}\n}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getRequesterRoleList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getRequesterRoleList {\n  getRequesterRoleList {\n    roleId\n    name\n    description\n    roleUserList\n  }\n}\n",
+										"variables": "{\"input\": \n{\n  \"page\": 1,\n  \"pageSize\": 100\n}\n}"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Task",
+					"item": [
+						{
+							"name": "getTask",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getTask($input: GetTaskInput!) {\n  getTask(input: $input) {\n    taskId\n    displayId\n    title\n    description\n    status\n    estimatedTime\n    scheduledStartDate\n    dueDate\n    overdue\n    actualStartDate\n    actualEndDate\n    technician\n    techGroup\n    module\n    ticket\n    workItem\n  }\n}\n",
+										"variables": "{\"input\": {\"taskId\": \"taksid\"}\n}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getTaskList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getTaskList($input: GetTaskListInput!) {\n  getTaskList(input: $input) {\n    tasks {\n      taskId\n      displayId\n      title\n      description\n      status\n      workItem\n    }\n    listInfo {\n      page\n      pageSize\n    }\n  }\n}\n",
+										"variables": "{\"input\": {\"listInfo\": {\n  \"page\": 1,\n  \"pageSize\": 10}}}\n"
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Project",
+					"item": [
+						{
+							"name": "getWorkStatusList",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "CustomerSubDomain",
+										"value": "enteryourdomain",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getWorkStatusList {\n  getWorkStatusList {\n    statusId\n    name\n    state\n  }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://api.superops.ai/msp",
+									"protocol": "https",
+									"host": [
+										"api",
+										"superops",
+										"ai"
+									],
+									"path": [
+										"msp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "To fetch any data from SuperOps account"
+		},
+		{
+			"name": "Mutation",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Client",
+							"item": [
+								{
+									"name": "createClient",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createClient($input: CreateClientInput!) {\n  createClient(input: $input) {\n    accountId\n    name\n    stage\n    status\n    emailDomains\n    accountManager\n    primaryContact\n    secondaryContact\n    hqSite\n    technicianGroups\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"name\": \"Miniso\",\n  \"stage\": \"Active\",\n  \"status\": \"Paid\",\n  \"emailDomains\": [\"miniso.com\"],\n  \"accountManager\": {\"userId\":\"userID\" },\n  \"addTechnicianGroups\": {\"groupId\": \"groupdId\"}\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createClientV2",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createClientV2($input: CreateClientInputV2!) {\n  createClientV2(input: $input) {\n    accountId\n    name\n    stage\n    status\n    emailDomains\n    accountManager\n    primaryContact\n    secondaryContact\n    hqSite\n    technicianGroups\n    customFields\n  }\n}\n",
+												"variables": "{\"input\": {\n    \"name\":\"V2Test\",\n    \"hqSite\":{\n        \"name\":\"HQSite\",\n        \"working24x7\":\"True\",\n        \"timezoneCode\":\"America/New_York\"\n    }\n}}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createClientCustomField",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createClientCustomField($input: CreateCustomFieldInput!) {\n  createClientCustomField(input: $input) {\n    id\n    columnName\n    label\n    description\n    fieldType\n    showToClient\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"label\": \"VIP User\",\n  \"description\": \"Denotes VIP user\",\n  \"fieldType\": \"RADIO\",\n  \"options\": [\"no\"],\n  \"showToClient\": false\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createClientSite",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createClientSite($input: CreateClientSiteInput!) {\n  createClientSite(input: $input) {\n    id\n    name\n    businessHour {\n      day\n      start\n      end\n    }\n    holidayList {\n      id\n      name\n    }\n    timezoneCode\n    working24x7\n    line1\n    line2\n    line3\n    city\n    postalCode\n    countryCode\n    stateCode\n    contactNumber\n    client\n    installerInfo {\n      id\n      installerDownloadUrl\n      installerName\n      os\n    }\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"name\": \"Canada\",\n  \"working24x7\": false,\n  \"businessHour\": {\"day\": \"MONDAY\", \"start\": \"09:00\", \"end\": \"18:00\"},\n  \"holidayList\": {\"id\": \"id\"},\n  \"timezoneCode\": \"America/Los_Angeles\",\n  \"line1\": \"Ap #867-859 Sit Rd.\",\n  \"line2\": \"xyz789\",\n  \"line3\": \"abc123\",\n  \"city\": \"Victoria\",\n  \"postalCode\": \"V8R\",\n  \"countryCode\": \"+1\",\n  \"stateCode\": \"AB\",\n  \"client\": {\"accountId\": \"accountId\"}\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Invoice",
+							"item": [
+								{
+									"name": "createTax",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createTax($input: CreateTaxInput!) {\n  createTax(input: $input) {\n    taxId\n    name\n    rates {\n      rateId\n      name\n      rateValue\n    }\n    totalRate\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"name\": \"Extra tax\",\n  \"addRates\": {\n    \"name\":\"additional\",\n    \"rateValue\":\"10\"\n  }\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "IT Documentation",
+							"item": [
+								{
+									"name": "createItDocumentation",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createItDocumentation($input: CreateItDocumentationInput!) {\n  createItDocumentation(input: $input) {\n    itDocId\n    name\n    client\n    site\n    customFields\n  }\n}\n",
+												"variables": "{\n    \"input\": {\n        \"typeId\": \"typeId\",\n        \"name\": \"How to solve installation issue?\",\n        \"client\": {\n            \"accountId\": \"accountId\"\n        },\n        \"site\": {\n            \"id\": \"siteId\"\n        }\n    }\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Ticket",
+							"item": [
+								{
+									"name": "createCategories",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createCategories($input: [CreateCategoryInput!]!) {\n  createCategories(input: $input) {\n    id\n    name\n    subCategories {\n      id\n      name\n    }\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"name\": \"Validation\",\n  \"addSubCategories\": {\"name\": \"Data\"}\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createCauses",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createCauses($input: [CreateCauseInput!]!) {\n  createCauses(input: $input) {\n    id\n    name\n    subCauses {\n      id\n      name\n      description\n    }\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"name\": \"Overloading\",\n  \"addSubCauses\": {\n  \"name\": \"Overload\",\n  \"description\": \"CPU Overload\"\n}\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createTicket",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createTicket($input: CreateTicketInput!) {\ncreateTicket(input: $input) {\nsubject\nticketType\nclient\nsource\nticketId\n}\n}",
+												"variables": "{\n\"input\": {\n\"subject\": \"Test 18/07/2024\",\n\"description\":\"Start /n End\",\n\"ticketType\": \"INCIDENT\",\n\"client\": {\"accountId\": \"accountId\"},\n\"source\":\"FORM\"\n}\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createTicketConversation",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createTicketConversation($input: CreateTicketConversationInput!) {\ncreateTicketConversation(input: $input) {\nconversationId\ncontent\nuser\nattachments {\nfileName\noriginalFileName\nfileSize\n}\ntype\n}\n}",
+												"variables": "{\n    \"input\": {\n  \"content\": \"Testing attachment\",\n  \"user\": {\"userId\": \"userId\"},\n  \"attachments\": {\"fileName\": \"acme.pdf\", \"originalFileName\": \"Q&A - 26_06_2024.pdf\", \"fileSize\": \"820000\"},\n  \"ticket\": {\"ticketId\": \"ticketId\"},\n  \"sendMail\": false\n}\n    \n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createStatus",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createStatus($input: [CreateStatusInput!]!) {\n  createStatus(input: $input) {\n    id\n    name\n    description\n  }\n}\n",
+												"variables": "{\"input\": {\"name\": \"Awaiting customer repsonse\", \"description\": \"Waiting on customer reply\"}\n}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createTicketCustomField",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createTicketCustomField($input: CreateCustomFieldInput!) {\n  createTicketCustomField(input: $input) {\n    id\n    columnName\n    label\n    description\n    fieldType\n    showToClient\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"label\": \"VIP User\",\n  \"description\": \"Denotes VIP user\",\n  \"fieldType\": \"RADIO\",\n  \"options\": [\"yes\"],\n  \"showToClient\": false\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createTicketNote",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createTicketNote($input: CreateTicketNoteInput!) {\n  createTicketNote(input: $input) {\n    noteId\n    addedBy\n    content\n    privacyType\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"ticket\": {\"ticketId\": \"ticketId\"},\n  \"content\": \"The network access points need to be replaced\",\n  \"addedBy\": {\"userId\": \"userId\"},\n  \"privacyType\": \"PUBLIC\"\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Requester",
+							"item": [
+								{
+									"name": "createClientUser",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createClientUser($input: CreateClientUserInput!) {\n  createClientUser(input: $input) {\n    userId\n    firstName\n    lastName\n    name\n    email\n    contactNumber\n    reportingManager\n    site\n    role\n    client\n  }\n}\n",
+												"variables": "{\n    \"input\": \n    {\n\n        \"firstName\": \"FIRSTNAME\",\n        \"lastName\": \"LASTNAME\",\n        \"email\": \"test@test.com\",\n        \"contactNumber\": \"+123456\",\n        \"reportingManager\": {\n            \"userId\": \"USERID\"\n        },\n        \"role\": {\n            \"roleId\": 8\n        },\n        \"addAssociations\": \n        {\n            \"client\": {\n                \"accountId\": \"ACCOUNTID\"\n            },\n            \"site\": {\"id\": \"SITEID\"},\n            \"user\": {\n                \"userId\": \"USERID\"\n            }\n        }\n    }\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "createClientUserAssociations",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createClientUserAssociations($input: [CreateClientUserAssociationInput!]!) {\n  createClientUserAssociations(input: $input) {\n    id\n    client {\n      accountId\n      name\n      stage\n      status\n    }\n    site {\n      id\n      name\n    }\n    user {\n      userId\n      firstName\n      lastName\n      email\n    }\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"client\": {\n                \"accountId\": \"ACCOUNTID\"\n            },\n            \"site\": {\"id\": \"SITEID\"},\n            \"user\": {\n                \"userId\": \"USERID\"\n            }\n}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Task",
+							"item": [
+								{
+									"name": "createTask",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation createTask($input: CreateTaskInput!) {\n  createTask(input: $input) {\n    taskId\n    displayId\n    title\n    description\n    status\n    estimatedTime\n    scheduledStartDate\n    dueDate\n    overdue\n    actualStartDate\n    actualEndDate\n    technician\n    techGroup\n    module\n    ticket\n    workItem\n  }\n}\n",
+												"variables": "{\"input\": {\n  \"title\": \"Install Antivirus\",\n  \"description\": \"Installation task\",\n  \"status\": \"Planned\",\n  \"estimatedTime\": 5,\n  \"scheduledStartDate\": \"2024-07-20T09:00:00\",\n  \"dueDate\": \"2024-07-25T16:00:00\",\n  \"technician\": {\"userId\": USERID},\n  \"techGroup\": {\"groupId\": GROUPID},\n  \"module\": \"TICKET\",\n  \"ticket\": {\"ticketId\": \"TICKETID\"}\n}\n}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"item": [
+						{
+							"name": "Asset",
+							"item": [
+								{
+									"name": "UpdateAsset",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation updateAsset($input: UpdateAssetInput!) {\n  updateAsset(input: $input) {\n    assetId\n    customFields\n  }\n}",
+												"variables": "{\"input\": \n{\n  \"assetId\": \"ASSETID\",\n  \"customFields\": {\n    \"newval\": \"newval\"\n  }\n}\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Client",
+							"item": [
+								{
+									"name": "updateClient",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation updateClient($input: UpdateClientInput!) {\n  updateClient(input: $input) {\n    accountId\n    name\n    stage\n    status\n    emailDomains\n  }\n}\n",
+												"variables": "{\n    \"input\": {\n        \"accountId\": \"AccountID\",\n        \"name\": \"New Account\",\n        \"stage\": \"Active\",\n        \"status\": \"Paid\",\n        \"emailDomains\": [\n            \"newdomain.com\"\n        ]\n    }\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "IT Documentation",
+							"item": [
+								{
+									"name": "updateItDocumentation",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation updateItDocumentation($input: UpdateItDocumentationInput!) {\n  updateItDocumentation(input: $input) {\n    itDocId\n    name\n  }\n}\n",
+												"variables": "{\n    \"input\": {\n        \"typeId\": \"newtypw\",\n        \"itDocId\": \"newitdoc\",\n        \"name\": \"IT DOC Edited\"\n    }\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Requester",
+							"item": [
+								{
+									"name": "updateClientUser",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation updateClientUser($input: UpdateClientUserInput!) {\n  updateClientUser(input: $input) {\n    userId\n    customFields\n  }\n}\n",
+												"variables": "{\"input\": \n{\n  \"userId\": \"ID\",\n  \"customFields\": {\n  \"cfname\" : \"value\"\n  }\n}\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "updateClientUserAssociations",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation updateClientUserAssociations($input: [UpdateClientUserAssociationInput!]!) {\n  updateClientUserAssociations(input: $input) {\n    id\n    client {\n      accountId\n      name\n    }\n    site {\n      id\n      name\n    }\n    user {\n      userId\n      email\n    }\n  }\n}\n",
+												"variables": "{\n    \"input\": {\n        \"id\": \"CLIENTUSERID\",\n        \"site\": {\n            \"id\": \"SITEID\"\n        }\n    }\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Ticket",
+							"item": [
+								{
+									"name": "updateTicket",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation updateTicket($input: UpdateTicketInput!) {\n  updateTicket(input: $input) {\n    ticketId\n    displayId\n    subject\n    ticketType\n    source\n    status\n    priority\n    impact\n    urgency\n    category\n    subcategory\n    cause\n    subcause\n    resolutionCode\n  }\n}\n",
+												"variables": "{\n    \"input\": {\n  \"ticketId\": \"ID\",\n  \"subject\": \"Test email - new subject\",\n  \"status\": \"Resolved\",\n  \"priority\": \"High\",\n  \"impact\": \"High\",\n  \"urgency\": \"High\",\n  \"category\": \"Network\",\n  \"subcategory\": \"Wireless\",\n  \"cause\": \"Component issue\",\n  \"subcause\": \"Hardware Issue\",\n  \"resolutionCode\": \"Permanent Fix\",\n  \"ticketType\": \"INCIDENT\",\n  \"source\": \"FORM\"\n}\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Asset",
+							"item": [
+								{
+									"name": "softDeleteAsset",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation softDeleteAsset($input: AssetIdentifierInput) {\n  softDeleteAsset(input: $input)\n}",
+												"variables": "{\"input\": {\"assetId\": \"ASSETID\"}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Client",
+							"item": [
+								{
+									"name": "hardDeleteClients",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation hardDeleteClients($input: [ClientIdentifierInput!]!) {\n  hardDeleteClients(input: $input)\n}",
+												"variables": "{\n    \"input\": \n        {\"accountId\": \"ASSETID\"}   \n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "restoreClients",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation restoreClients($input: [ClientIdentifierInput!]!) {\n  restoreClients(input: $input)\n}",
+												"variables": "{\n    \"input\": \n        {\"accountId\": \"ACCOUNTID\"}  \n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "softDeleteClients",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation softDeleteClients($input: [ClientIdentifierInput!]!) {\n  softDeleteClients(input: $input)\n}\n",
+												"variables": "{\n    \"input\": \n        {\"accountId\": \"ACCOUNTID\"}  \n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "IT Documentation",
+							"item": [
+								{
+									"name": "deleteItDocumentation",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation deleteItDocumentation($input: ItDocumentationIdentifierInput!) {\n  deleteItDocumentation(input: $input)\n}\n",
+												"variables": "{\"input\": {\"itDocId\": ITDOCID}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Requester",
+							"item": [
+								{
+									"name": "deleteClientUser",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation deleteClientUser($input: DeleteUserInput!) {\n  deleteClientUser(input: $input)\n}",
+												"variables": "{\n    \"input\": {\n        \"userId\": \"USERID\",\n        \"forget\": true\n    }\n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "deleteClientUserAssociations",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation deleteClientUserAssociations($input: [ClientUserAssociationIdentifierInput!]!) {\n  deleteClientUserAssociations(input: $input)\n}",
+												"variables": "{\"input\": {\"id\": \"USERID\"}}\n"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Ticket",
+							"item": [
+								{
+									"name": "hardDeleteTickets",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation hardDeleteTickets($input: [TicketIdentifierInput]) {\n  hardDeleteTickets(input: $input)\n}",
+												"variables": "{\n    \"input\": \n        {\"ticketId\": \"TICKETID\"}   \n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "restoreTickets",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation restoreTickets($input: [TicketIdentifierInput]) {\n  restoreTickets(input: $input)\n}\n",
+												"variables": "{\n    \"input\": \n        {\"ticketId\": \"TICKETID\"}   \n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "softDeleteTickets",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "CustomerSubDomain",
+												"value": "enteryourdomain",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation softDeleteTickets($input: [TicketIdentifierInput]) {\n  softDeleteTickets(input: $input)\n}\n",
+												"variables": "{\n    \"input\": \n        {\"ticketId\": \"TICKETID\"}   \n}"
+											}
+										},
+										"url": {
+											"raw": "https://api.superops.ai/msp",
+											"protocol": "https",
+											"host": [
+												"api",
+												"superops",
+												"ai"
+											],
+											"path": [
+												"msp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			],
+			"description": "To create or update or delete data from SuperOps Account"
+		}
+	]
+}
